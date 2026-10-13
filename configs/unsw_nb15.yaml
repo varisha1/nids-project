@@ -1,0 +1,26 @@
+seed: 42
+data:
+  paths:
+    - data/raw/UNSW_NB15_training-set.csv
+    - data/raw/UNSW_NB15_testing-set.csv
+  label_path: null
+  label_column: label
+  drop_columns: [id, attack_cat]
+  benign_values: ["0"]
+  test_size: 0.3
+train:
+  epochs: 2
+  batch_size: 64
+  lr: 0.001
+adv:
+  eps_max: 0.2
+  lam_align: 1.0
+  lam_smooth: 0.5
+  pgd_alpha: 0.01
+  pgd_steps: 10
+eval:
+  eps: [0.01, 0.05, 0.10, 0.15]
+  blackbox_budget: 10000
+models: [rf, nn]
+output_dir: results/unsw_nb15
+
